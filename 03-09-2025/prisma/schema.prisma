@@ -4,55 +4,53 @@ datasource db {
 }
 
 generator client {
-    provider = "prisma-client-js"
+    provider = "prisma-client"
+    output = "client"
+    runtime = "deno"
 }
 
 model Question {
-    id               String   @id @default(cuid())
-    type             QuestionType
-    difficulty       Difficulty
-    category         Category @relation(fields: [categoryId], references: [id])
-    categoryId       String
-    question         String   @unique
-    correctAnswer    Answer   @relation("CorrectAnswer", fields: [correctAnswerId], references: [id])
-    correctAnswerId  String
-    incorrectAnswers Answer[] @relation("IncorrectAnswers")
-    encoding         Encoding @default(Default)
-    createdAt        DateTime @default(now())
-    updatedAt        DateTime @updatedAt
+    id                String     @id @default(cuid())
+    
+    question          String
+
+    difficulty        Difficulty @relation(fields: [difficultyId], references: [id])
+    difficultyId      String
+
+    category          Category   @relation(fields: [categoryId], references: [id])
+    categoryId        String
+
+    type              Type       @relation(fields: [typeId], references: [id])
+    typeId            String
+
+    correct_answer    Answer     @relation(name: "CorrectAnswer", fields: [correct_answer_id], references: [id])
+    correct_answer_id String
+    
+    incorrect_answers Answer[]   @relation(name: "IncorrectAnswers")    
 }
 
-model Answer {
-    id               String   @id @default(cuid())
-    answer           String
-    correctQuestions Question[] @relation("CorrectAnswer")
-    incorrectQuestions Question[] @relation("IncorrectAnswers")
-    createdAt        DateTime @default(now())
+model Type {
+    id       String     @id @default(cuid())
+    type     String     @unique
+    Question Question[]
 }
 
 model Category {
     id         String     @id @default(cuid())
     name       String     @unique
-    questions  Question[]
-    createdAt  DateTime   @default(now())
+    opentdb_id Int        @unique
+    question   Question[]
 }
 
-enum QuestionType {
-    Any
-    Multiple
-    Boolean
+model Difficulty {
+    id       String     @id @default(cuid())
+    level    String     @unique
+    Question Question[]
 }
 
-enum Difficulty {
-    Any
-    Easy
-    Medium
-    Hard
-}
-
-enum Encoding {
-    Default
-    Url3986
-    UrlLegacy
-    Base64
+model Answer {
+    id                     String     @id @default(cuid())
+    answer                 String
+    incorrect_in_questions Question[] @relation(name: "IncorrectAnswers")
+    correct_in_questions   Question[] @relation(name: "CorrectAnswer")
 }

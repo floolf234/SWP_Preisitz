@@ -1,0 +1,67 @@
+// ...existing code...
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Player {
+  id          Int        @id @default(autoincrement())
+  name        String
+  nummer      Int?
+  position    String?
+  mannschaft  Mannschaft @relation(fields: [mannschaftId], references: [id])
+  mannschaftId Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Mannschaft {
+  id      Int      @id @default(autoincrement())
+  name    String   @unique
+  spieler Player[]
+
+  homeMatches Match[] @relation("HomeMatches")
+  awayMatches Match[] @relation("AwayMatches")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Stadion {
+  id    Int    @id @default(autoincrement())
+  name  String
+  stadt String
+
+  matches Match[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Match {
+  id         Int       @id @default(autoincrement())
+  datum      DateTime
+  stadion    Stadion   @relation(fields: [stadionId], references: [id])
+  stadionId  Int
+
+  homeTeam   Mannschaft @relation("HomeMatches", fields: [homeTeamId], references: [id])
+  homeTeamId Int
+
+  awayTeam   Mannschaft @relation("AwayMatches", fields: [awayTeamId], references: [id])
+  awayTeamId Int
+
+  scoreHome  Int?
+  scoreAway  Int?
+  played     Boolean   @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([homeTeamId, awayTeamId, datum])
+  @@index([datum])
+}

@@ -1,0 +1,30 @@
+datasource db {
+    provider = "sqlite"
+    url      = "file:../dev.db"
+}
+
+generator client {
+    provider = "prisma-client"
+    output = "client"
+    runtime = "deno"
+}
+
+model Artist {
+    id        String   @id @default(cuid())
+    name      String   @unique
+    styles   style[]
+    instruments instrument[]
+}
+
+model instrument {
+    id        String   @id @default(cuid())
+    name      String
+    instrument_types String
+    artists   Artist[]
+}
+
+model style {
+    id        String   @id @default(cuid())
+    name      String
+    artists   Artist[]
+}
