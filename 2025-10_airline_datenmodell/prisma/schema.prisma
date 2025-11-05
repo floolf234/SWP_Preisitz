@@ -14,4 +14,28 @@ model Airport {
     name     String
     iataCode String @unique
     city     String
+    departingFlights Flight[] @relation(name: "OriginAirport")
+    arrivingFlights  Flight[] @relation(name: "DestinationAirport")
 }
+
+model Flight {
+    id                String   @id @default(uuid())
+    flightNumber     String   @unique
+    originAirportId  String
+    destinationAirportId String
+    departureTime    DateTime
+    arrivalTime      DateTime
+    originAirport    Airport  @relation(name: "OriginAirport", fields: [originAirportId], references: [id])
+    destinationAirport Airport @relation(name: "DestinationAirport", fields: [destinationAirportId], references: [id])
+    passengers       Passenger[] @relation(name: "PassengerFlights")
+}
+
+model Passenger {
+    id        String  @id @default(uuid())
+    firstName String
+    lastName  String
+    email     String  @unique
+    flights   Flight[] @relation(name: "PassengerFlights")
+}
+
+
