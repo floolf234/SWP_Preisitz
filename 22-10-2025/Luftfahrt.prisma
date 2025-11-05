@@ -1,0 +1,17 @@
+
+generator client {
+    provider = "prisma-client-js"
+    output = "client"
+    runtime = "deno"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model Airport {
+    id          String    @id @default(cuid())
+    name        String
+    city        String 
+}
