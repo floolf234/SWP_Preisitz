@@ -10,32 +10,39 @@ generator client {
 }
 
 model Airport {
-    id       String @id @default(uuid())
-    name     String
-    iataCode String @unique
-    city     String
+    id               String   @id @default(uuid())
+    name             String
+    iataCode         String   @unique
+    city             String
     departingFlights Flight[] @relation(name: "OriginAirport")
     arrivingFlights  Flight[] @relation(name: "DestinationAirport")
 }
 
 model Flight {
-    id                String   @id @default(uuid())
-    flightNumber     String   @unique
-    originAirportId  String
-    destinationAirportId String
-    departureTime    DateTime
-    arrivalTime      DateTime
-    originAirport    Airport  @relation(name: "OriginAirport", fields: [originAirportId], references: [id])
-    destinationAirport Airport @relation(name: "DestinationAirport", fields: [destinationAirportId], references: [id])
-    passengers       Passenger[] @relation(name: "PassengerFlights")
+    id            String      @id @default(uuid())
+    flightNumber  String
+    departureTime DateTime
+    arrivalTime   DateTime
+    passengers    Passenger[]
+    origin        Airport     @relation(name: "OriginAirport", fields: [originId], references: [id])
+    originId      String
+    destination   Airport     @relation(name: "DestinationAirport", fields: [destinationId], references: [id])
+    destinationId String
+    plane         Plane       @relation(fields: [planeId], references: [id])
+    planeId       String
 }
 
 model Passenger {
-    id        String  @id @default(uuid())
+    id        String   @id @default(uuid())
     firstName String
     lastName  String
-    email     String  @unique
-    flights   Flight[] @relation(name: "PassengerFlights")
+    email     String   @unique
+    flights   Flight[]
 }
 
-
+model Plane {
+    id       String   @id @default(uuid())
+    model    String
+    capacity Int
+    flights  Flight[]
+}

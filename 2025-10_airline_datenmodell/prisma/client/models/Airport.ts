@@ -223,8 +223,8 @@ export type AirportCreateInput = {
   name: string
   iataCode: string
   city: string
-  departingFlights?: Prisma.FlightCreateNestedManyWithoutOriginAirportInput
-  arrivingFlights?: Prisma.FlightCreateNestedManyWithoutDestinationAirportInput
+  departingFlights?: Prisma.FlightCreateNestedManyWithoutOriginInput
+  arrivingFlights?: Prisma.FlightCreateNestedManyWithoutDestinationInput
 }
 
 export type AirportUncheckedCreateInput = {
@@ -232,8 +232,8 @@ export type AirportUncheckedCreateInput = {
   name: string
   iataCode: string
   city: string
-  departingFlights?: Prisma.FlightUncheckedCreateNestedManyWithoutOriginAirportInput
-  arrivingFlights?: Prisma.FlightUncheckedCreateNestedManyWithoutDestinationAirportInput
+  departingFlights?: Prisma.FlightUncheckedCreateNestedManyWithoutOriginInput
+  arrivingFlights?: Prisma.FlightUncheckedCreateNestedManyWithoutDestinationInput
 }
 
 export type AirportUpdateInput = {
@@ -241,8 +241,8 @@ export type AirportUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   iataCode?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
-  departingFlights?: Prisma.FlightUpdateManyWithoutOriginAirportNestedInput
-  arrivingFlights?: Prisma.FlightUpdateManyWithoutDestinationAirportNestedInput
+  departingFlights?: Prisma.FlightUpdateManyWithoutOriginNestedInput
+  arrivingFlights?: Prisma.FlightUpdateManyWithoutDestinationNestedInput
 }
 
 export type AirportUncheckedUpdateInput = {
@@ -250,8 +250,8 @@ export type AirportUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   iataCode?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
-  departingFlights?: Prisma.FlightUncheckedUpdateManyWithoutOriginAirportNestedInput
-  arrivingFlights?: Prisma.FlightUncheckedUpdateManyWithoutDestinationAirportNestedInput
+  departingFlights?: Prisma.FlightUncheckedUpdateManyWithoutOriginNestedInput
+  arrivingFlights?: Prisma.FlightUncheckedUpdateManyWithoutDestinationNestedInput
 }
 
 export type AirportCreateManyInput = {
@@ -338,7 +338,7 @@ export type AirportCreateWithoutDepartingFlightsInput = {
   name: string
   iataCode: string
   city: string
-  arrivingFlights?: Prisma.FlightCreateNestedManyWithoutDestinationAirportInput
+  arrivingFlights?: Prisma.FlightCreateNestedManyWithoutDestinationInput
 }
 
 export type AirportUncheckedCreateWithoutDepartingFlightsInput = {
@@ -346,7 +346,7 @@ export type AirportUncheckedCreateWithoutDepartingFlightsInput = {
   name: string
   iataCode: string
   city: string
-  arrivingFlights?: Prisma.FlightUncheckedCreateNestedManyWithoutDestinationAirportInput
+  arrivingFlights?: Prisma.FlightUncheckedCreateNestedManyWithoutDestinationInput
 }
 
 export type AirportCreateOrConnectWithoutDepartingFlightsInput = {
@@ -359,7 +359,7 @@ export type AirportCreateWithoutArrivingFlightsInput = {
   name: string
   iataCode: string
   city: string
-  departingFlights?: Prisma.FlightCreateNestedManyWithoutOriginAirportInput
+  departingFlights?: Prisma.FlightCreateNestedManyWithoutOriginInput
 }
 
 export type AirportUncheckedCreateWithoutArrivingFlightsInput = {
@@ -367,7 +367,7 @@ export type AirportUncheckedCreateWithoutArrivingFlightsInput = {
   name: string
   iataCode: string
   city: string
-  departingFlights?: Prisma.FlightUncheckedCreateNestedManyWithoutOriginAirportInput
+  departingFlights?: Prisma.FlightUncheckedCreateNestedManyWithoutOriginInput
 }
 
 export type AirportCreateOrConnectWithoutArrivingFlightsInput = {
@@ -391,7 +391,7 @@ export type AirportUpdateWithoutDepartingFlightsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   iataCode?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
-  arrivingFlights?: Prisma.FlightUpdateManyWithoutDestinationAirportNestedInput
+  arrivingFlights?: Prisma.FlightUpdateManyWithoutDestinationNestedInput
 }
 
 export type AirportUncheckedUpdateWithoutDepartingFlightsInput = {
@@ -399,7 +399,7 @@ export type AirportUncheckedUpdateWithoutDepartingFlightsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   iataCode?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
-  arrivingFlights?: Prisma.FlightUncheckedUpdateManyWithoutDestinationAirportNestedInput
+  arrivingFlights?: Prisma.FlightUncheckedUpdateManyWithoutDestinationNestedInput
 }
 
 export type AirportUpsertWithoutArrivingFlightsInput = {
@@ -418,7 +418,7 @@ export type AirportUpdateWithoutArrivingFlightsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   iataCode?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
-  departingFlights?: Prisma.FlightUpdateManyWithoutOriginAirportNestedInput
+  departingFlights?: Prisma.FlightUpdateManyWithoutOriginNestedInput
 }
 
 export type AirportUncheckedUpdateWithoutArrivingFlightsInput = {
@@ -426,7 +426,7 @@ export type AirportUncheckedUpdateWithoutArrivingFlightsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   iataCode?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
-  departingFlights?: Prisma.FlightUncheckedUpdateManyWithoutOriginAirportNestedInput
+  departingFlights?: Prisma.FlightUncheckedUpdateManyWithoutOriginNestedInput
 }
 
 

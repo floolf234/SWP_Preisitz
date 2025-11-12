@@ -50,7 +50,8 @@ export const AnyNull = runtime.objectEnumValues.instances.AnyNull
 export const ModelName = {
   Airport: 'Airport',
   Flight: 'Flight',
-  Passenger: 'Passenger'
+  Passenger: 'Passenger',
+  Plane: 'Plane'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -79,10 +80,11 @@ export type AirportScalarFieldEnum = (typeof AirportScalarFieldEnum)[keyof typeo
 export const FlightScalarFieldEnum = {
   id: 'id',
   flightNumber: 'flightNumber',
-  originAirportId: 'originAirportId',
-  destinationAirportId: 'destinationAirportId',
   departureTime: 'departureTime',
-  arrivalTime: 'arrivalTime'
+  arrivalTime: 'arrivalTime',
+  originId: 'originId',
+  destinationId: 'destinationId',
+  planeId: 'planeId'
 } as const
 
 export type FlightScalarFieldEnum = (typeof FlightScalarFieldEnum)[keyof typeof FlightScalarFieldEnum]
@@ -96,6 +98,15 @@ export const PassengerScalarFieldEnum = {
 } as const
 
 export type PassengerScalarFieldEnum = (typeof PassengerScalarFieldEnum)[keyof typeof PassengerScalarFieldEnum]
+
+
+export const PlaneScalarFieldEnum = {
+  id: 'id',
+  model: 'model',
+  capacity: 'capacity'
+} as const
+
+export type PlaneScalarFieldEnum = (typeof PlaneScalarFieldEnum)[keyof typeof PlaneScalarFieldEnum]
 
 
 export const SortOrder = {

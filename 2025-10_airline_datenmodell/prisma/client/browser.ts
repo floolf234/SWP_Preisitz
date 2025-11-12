@@ -31,3 +31,8 @@ export type Flight = Prisma.FlightModel
  * 
  */
 export type Passenger = Prisma.PassengerModel
+/**
+ * Model Plane
+ * 
+ */
+export type Plane = Prisma.PlaneModel
